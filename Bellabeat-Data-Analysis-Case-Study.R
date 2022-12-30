@@ -4,7 +4,6 @@ install.packages("lubridate")
 library(tidyverse)
 library("lubridate")
 
-setwd("C:/Users/antho/OneDrive/Υπολογιστής/Ανθούλα/projects/bellabeat project/Fitabase Data 4.12.16-5.12.16")
 
 #Check if the observations of the three datasets (dailySteps, dailyCalories, dailyIntensities) are includes in dailyActivity dataset
 dailyActivity <- read_csv("dailyActivity_merged.csv")
@@ -58,16 +57,16 @@ data[, 'LightActiveDistance'] = round(data[, 'LightActiveDistance'], 2)
 data[, 'SedentaryActiveDistance'] = round(data[, 'SedentaryActiveDistance'], 2)
 data$TotalDistance = data$VeryActiveDistance + data$ModeratelyActiveDistance + data$LightActiveDistance + data$SedentaryActiveDistance
 
-#Order the dataframe by the Weekday column from "Δευτέρα" to "Κυριακή"
-weekday_order <- c("Δευτέρα", "Τρίτη", "Τετάρτη", "Πέμπτη", "Παρασκευή", "Σάββατο", "Κυριακή")
+#Order the dataframe by the Weekday column from "Ξ”ΞµΟ…Ο„Ξ­ΟΞ±" to "ΞΟ…ΟΞΉΞ±ΞΊΞ®"
+weekday_order <- c("Ξ”ΞµΟ…Ο„Ξ­ΟΞ±", "Ξ¤ΟΞ―Ο„Ξ·", "Ξ¤ΞµΟ„Ξ¬ΟΟ„Ξ·", "Ξ Ξ­ΞΌΟ€Ο„Ξ·", "Ξ Ξ±ΟΞ±ΟƒΞΊΞµΟ…Ξ®", "Ξ£Ξ¬Ξ²Ξ²Ξ±Ο„ΞΏ", "ΞΟ…ΟΞΉΞ±ΞΊΞ®")
 data <- data %>% arrange(match(WeekDay, weekday_order))
-data$WeekDay[data$WeekDay == 'Δευτέρα'] <- 'Monday'
-data$WeekDay[data$WeekDay == 'Τρίτη'] <- 'Tuesday'
-data$WeekDay[data$WeekDay == 'Τετάρτη'] <- 'Wednesday'
-data$WeekDay[data$WeekDay == 'Πέμπτη'] <- 'Thursday'
-data$WeekDay[data$WeekDay == 'Παρασκευή'] <- 'Friday'
-data$WeekDay[data$WeekDay == 'Σάββατο'] <- 'Saturday'
-data$WeekDay[data$WeekDay == 'Κυριακή'] <- 'Sunday'
+data$WeekDay[data$WeekDay == 'Ξ”ΞµΟ…Ο„Ξ­ΟΞ±'] <- 'Monday'
+data$WeekDay[data$WeekDay == 'Ξ¤ΟΞ―Ο„Ξ·'] <- 'Tuesday'
+data$WeekDay[data$WeekDay == 'Ξ¤ΞµΟ„Ξ¬ΟΟ„Ξ·'] <- 'Wednesday'
+data$WeekDay[data$WeekDay == 'Ξ Ξ­ΞΌΟ€Ο„Ξ·'] <- 'Thursday'
+data$WeekDay[data$WeekDay == 'Ξ Ξ±ΟΞ±ΟƒΞΊΞµΟ…Ξ®'] <- 'Friday'
+data$WeekDay[data$WeekDay == 'Ξ£Ξ¬Ξ²Ξ²Ξ±Ο„ΞΏ'] <- 'Saturday'
+data$WeekDay[data$WeekDay == 'ΞΟ…ΟΞΉΞ±ΞΊΞ®'] <- 'Sunday'
 
 write_csv(data, "data.csv")
 
